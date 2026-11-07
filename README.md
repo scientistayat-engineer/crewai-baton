@@ -20,12 +20,13 @@
 ![Markdown](https://img.shields.io/badge/Reports-Markdown-083FA1?style=flat-square&logo=markdown&logoColor=white)
 ![Mermaid](https://img.shields.io/badge/Diagrams-Mermaid-FF3670?style=flat-square&logo=mermaid&logoColor=white)
 ![Tests](https://img.shields.io/badge/Tests-Simulated%20passing-2DFF9A?style=flat-square)
-![Status](https://img.shields.io/badge/Status-Active-00E5FF?style=flat-square)
+![Status](https://img.shields.io/badge/Status-Live-2DFF9A?style=flat-square)
+[![Live demo](https://img.shields.io/badge/Live%20demo-crewai--baton.vercel.app-000000?style=flat-square&logo=vercel&logoColor=white)](https://crewai-baton.vercel.app)
 ![Made by](https://img.shields.io/badge/Made%20by-Anushay%20Ayat-FF4FA3?style=flat-square)
 
 **Describe a topic. Three AI agents hand the work to each other. Get a structured report, and watch every step live.**
 
-[Features](#features) · [Screenshots](#screenshots) · [How it works](#how-it-works) · [Quick start](#quick-start-local) · [Deploy](#deploy-vercel--firebase) · [API](#api-reference) · [FAQ](#troubleshooting)
+[Live demo](https://crewai-baton.vercel.app) · [Features](#features) · [Screenshots](#screenshots) · [How it works](#how-it-works) · [Quick start](#quick-start-local) · [Deploy](#deploy-vercel--firebase) · [API](#api-reference) · [FAQ](#troubleshooting)
 
 </div>
 
@@ -92,6 +93,14 @@ A futuristic mission-control dashboard shows progress, timings, word counts and 
 </div>
 
 > Screenshots come from the demo build, which uses sample data in place of live model output.
+
+## Documentation
+
+| File | Description |
+|------|-------------|
+| [Project report (PDF)](docs/Baton_Report.pdf) | Full project report with diagrams and screenshots |
+| [Project report (Word)](docs/Baton_Report.docx) | Editable version of the report |
+| [Presentation (PowerPoint)](docs/Baton_Presentation.pptx) | 30-slide presentation of the project |
 
 ## How it works
 
@@ -224,7 +233,7 @@ Open **http://127.0.0.1:8000**. Leave `public/js/firebase-config.js` as it is an
 <img src="docs/diagrams/deploy_c.png" alt="Deployment pipeline" width="90%">
 </div>
 
-Full walkthrough: [DEPLOY.md](DEPLOY.md).
+Live site: **https://crewai-baton.vercel.app**. Full walkthrough: [DEPLOY.md](DEPLOY.md).
 
 ## Environment variables
 
@@ -275,7 +284,7 @@ POST /api/stage
 | Missing earlier output returns 400, missing token returns 401 | Passed (simulated) |
 | Cloud browser flow: login, launch, three stages, report saved, history, sign out | Passed (simulated) |
 | Login page: errors, access granted, password strength | Passed (simulated) |
-| Live run on real Groq, Firebase, Vercel and LangSmith | Pending: run once after deployment |
+| Live run on the deployed site (Vercel, Firebase, Groq, Google sign-in) | Passed |
 
 ## Troubleshooting
 
@@ -295,9 +304,10 @@ POST /api/stage
 - [x] Accounts and per-user report archive
 - [x] LangSmith tracing
 - [x] Vercel and Firebase deployment setup
+- [x] Google sign-in and login-first site
 - [ ] Fact-checker agent and source links
 - [ ] PDF export and report sharing
-- [ ] Google sign in and password reset
+- [ ] Password reset and email verification
 
 ## Notes
 
