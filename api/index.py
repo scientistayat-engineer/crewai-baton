@@ -25,7 +25,7 @@ class StageReq(BaseModel):
 
 
 def verify(auth: Optional[str]) -> str:
-    """Check the Firebase ID token. If FIREBASE_PROJECT_ID is not set (local dev) auth is skipped."""
+    """Check the Firebase ID token and return the user id. If FIREBASE_PROJECT_ID is not set (local dev) auth is skipped."""
     if not PROJECT_ID:
         return "dev"
     if not auth or not auth.startswith("Bearer "):
@@ -33,10 +33,14 @@ def verify(auth: Optional[str]) -> str:
     try:
         from google.auth.transport import requests as greq
         from google.oauth2 import id_token
-        return id_token.verify_firebase_token(auth[7:], greq.Request(), audience=PROJECT_ID)["uid"]
-    except Exception:
-        raise HTTPException(401, "Your session has expired. Please sign in again")
-
+        claims = id_token.verify_firebase_token(auth[7:], greq.Request(), audience=PROJECT_ID)
+        return claims.get("user_id") or claims["sub"]
+    except ImportError as e:
+        raise HTTPException(500, f"Server is missing a package: {e}")
+    except Exception as e:
+        print("Token check failed:", repr(e))
+        raise HTTPException(401, f"Sign-in could not be verified ({str(e)[:140]})")
+    
 
 @traceable(run_type="llm", name="groq-completion", client=ls)
 def llm(system: str, prompt: str) -> str:
@@ -85,4 +89,4 @@ def stage(r: StageReq, authorization: Optional[str] = Header(None)):
 
 @app.get("/api/health")
 def health():
-    return {"ok": True, "model": MODEL, "auth": bool(PROJECT_ID), "langsmith": os.getenv("LANGSMITH_TRACING", "false")}
+    return {"ok": True, "model": MODEL, "auth": bool("crewai-baton"), "langsmith": os.getenv("LANGSMITH_TRACING", "false")}
