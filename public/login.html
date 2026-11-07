@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sign in | Baton</title>
+<script src="/js/firebase-config.js"></script><script src="/js/cloud.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta name="theme-color" content="#020b14">
+<link rel="stylesheet" href="/css/login.css"></head><body>
+<canvas id="bg"></canvas>
+<section class="brand"><a class="logo" href="/" aria-label="Baton home"><img src="/img/logo-wordmark.svg" alt="Baton" height="38"></a>
+<h1>Welcome to mission control.</h1><p>Sign in to launch your AI research crew, keep your reports and pick up where you left off.</p>
+<svg viewBox="0 0 400 320" aria-hidden="true"><circle class="rg r1" cx="200" cy="160" r="150"/><circle class="rg r2" cx="200" cy="160" r="136"/>
+<path class="sg" d="M200 60A100 100 0 0 1 286.6 210"/><path class="sg" d="M270 247A100 100 0 0 1 130 247"/><path class="sg" d="M113.4 210A100 100 0 0 1 200 60"/><circle cx="200" cy="160" r="40" fill="#021a2b" stroke="#00e5ff" stroke-width="2"/></svg></section>
+<section class="side"><div class="hud">
+<div class="tabs" role="tablist"><button class="tab on" data-t="in" role="tab">SIGN IN</button><button class="tab" data-t="up" role="tab">CREATE ACCOUNT</button></div>
+<form id="in" class="on" novalidate>
+ <label for="e1">Email</label><div class="in"><input id="e1" type="email" autocomplete="email" placeholder="you@example.com"></div>
+ <label for="p1">Password</label><div class="in"><input id="p1" type="password" autocomplete="current-password" placeholder="Your password"><button type="button" class="eye" aria-label="Show password">SHOW</button></div>
+ <div class="row"><label class="remember"><input type="checkbox" checked>Keep me signed in</label></div>
+ <button class="go" type="submit">ACCESS MISSION CONTROL</button>
+</form>
+<form id="up" novalidate>
+ <label for="n2">Full name</label><div class="in"><input id="n2" autocomplete="name" placeholder="Your name"></div>
+ <label for="e2">Email</label><div class="in"><input id="e2" type="email" autocomplete="email" placeholder="you@example.com"></div>
+ <label for="p2">Password</label><div class="in"><input id="p2" type="password" autocomplete="new-password" placeholder="At least 8 characters"><button type="button" class="eye" aria-label="Show password">SHOW</button></div>
+ <div class="meter"><i id="mt"></i></div><div class="hint" id="mh">Use 8+ characters with letters, numbers and symbols.</div>
+ <button class="go" type="submit">CREATE ACCOUNT</button>
+</form>
+<div class="err" id="err" role="alert"></div>
+<div class="sw" id="sw">New here? <a data-t="up">Create an account</a></div>
+</div></section>
+<div class="ok" id="ok" role="status"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M7 12.5l3.2 3.2L17 9"/></svg><b>ACCESS GRANTED</b><span id="okn"></span></div>
+<script src="/js/particles.js"></script>
+<script src="/js/login.js"></script></body></html>

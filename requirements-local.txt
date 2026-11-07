@@ -1,0 +1,7 @@
+crewai
+python-dotenv
+fastapi
+uvicorn
+langsmith
+google-auth
+requests

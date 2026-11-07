@@ -1,0 +1,24 @@
+/* Agent cards, mission log */
+.agents{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px}
+.ag{padding:16px;display:flex;flex-direction:column;gap:10px;transition:.3s}
+.ag.working{box-shadow:inset 0 0 0 1px var(--am),0 0 24px #ffb02033}.ag.done{box-shadow:inset 0 0 0 1px var(--cy)}
+.ah{display:flex;gap:12px;align-items:center}
+.hex{width:46px;height:50px;flex:none;display:grid;place-items:center;background:linear-gradient(160deg,var(--cy),var(--bl));clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.hex i{width:42px;height:46px;display:grid;place-items:center;background:#03121f;clip-path:inherit}
+.hex svg{width:22px;height:22px;fill:none;stroke:var(--cy);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ag.working .hex svg{stroke:var(--am)}
+.an{font:700 17px Rajdhani;line-height:1.1}.ac{font-size:13px;color:var(--dim)}
+.chip{margin-left:auto;font:700 11px Orbitron;letter-spacing:.08em;padding:4px 8px;border:1px solid var(--edge);color:var(--dim)}
+.ag.working .chip{color:var(--am);border-color:var(--am)}.ag.done .chip{color:var(--cy);border-color:var(--cy)}
+.at{font-size:15px;color:var(--tx);min-height:44px}
+.pb{height:4px;background:#0d3550;overflow:hidden}.pb i{display:block;height:100%;width:0;background:var(--cy);box-shadow:0 0 8px var(--cy);transition:width .6s}
+.ag.working .pb i{width:40%;background:var(--am);box-shadow:0 0 8px var(--am);animation:sw 1.3s ease-in-out infinite alternate}
+.ag.done .pb i{width:100%}
+@keyframes sw{from{margin-left:0}to{margin-left:60%}}
+.am{display:flex;gap:16px;font-size:13px;color:var(--dim)}.am b{color:var(--tx);font-weight:600}
+.ap{font-size:14px;color:var(--dim);border-left:2px solid var(--edge);padding-left:10px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.ap:empty{display:none}
+.mlog{margin-top:18px}.mlog h3{font-size:12px;letter-spacing:.14em;color:var(--dim);margin:0 0 8px}
+#ml{list-style:none;margin:0;padding:0;max-height:150px;overflow:auto;font-size:15px}
+#ml li{display:flex;gap:12px;padding:3px 0;border-bottom:1px dashed #0d3550}#ml time{color:var(--cy);font-variant-numeric:tabular-nums;flex:none}#ml .e{color:#ff8b97}
+@media(max-width:900px){.agents{grid-template-columns:1fr}}

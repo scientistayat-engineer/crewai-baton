@@ -1,0 +1,8 @@
+main.py
+llm_patch.py
+requirements-local.txt
+reports/
+users.db
+venv/
+__pycache__/
+.env

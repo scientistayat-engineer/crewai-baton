@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Baton | AI research crew</title>
+<script src="/js/firebase-config.js"></script><script src="/js/cloud.js"></script>
+<script src="/js/auth-guard.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/img/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
+<meta name="theme-color" content="#020b14">
+<link rel="stylesheet" href="/css/hud.css">
+<link rel="stylesheet" href="/css/agents.css">
+<link rel="stylesheet" href="/css/effects.css">
+<link rel="stylesheet" href="/css/site.css"></head><body><canvas id="bg"></canvas>
+<header class="nav"><div class="c"><a class="brand" href="#top" aria-label="Baton home"><img src="/img/logo-wordmark.svg" alt="Baton" height="34"></a><nav class="lk"><a href="#features">Features</a><a href="#how">How it works</a><a href="#use">Use cases</a><a href="#faq">FAQ</a></nav><a href="/login.html" id="auth" class="nav-auth">Sign in</a><a class="go sm" href="#app">Launch crew</a></div></header>
+<section class="hero" id="top"><div class="c"><img class="hero-logo" src="/img/logo.svg" alt="Baton logo" width="84" height="84">
+<div class="tag">MULTI-AGENT RESEARCH PLATFORM</div>
+<h1>A crew of AI agents that researches, analyses and writes for you.</h1>
+<p>Describe a topic. Three specialist agents hand the work to each other and deliver a structured, export-ready report, while you watch every step live.</p>
+<div class="btns"><a class="go" href="#app">Try it now</a><a class="ghost" href="#how">SEE HOW IT WORKS</a></div>
+<div class="stats rv"><div><b>3</b><span>Specialist agents</span></div><div><b>3</b><span>Report lengths</span></div><div><b>5</b><span>Writing voices</span></div><div><b>1 click</b><span>Copy, download or print</span></div></div></div></section>
+<div id="app"></div>
+<div class="wrap"><div>
+<div class="top"><div class="logo logo-sm"><img class="mc-icon" src="/img/logo.svg" alt="" width="22" height="22">MISSION CONTROL</div><div class="sys"><i></i>Crew online<span id="el">00:00</span></div></div>
+<h2 class="sec">Tell the crew what to investigate.</h2>
+<div class="hud">
+ <div class="cmd"><b>&gt;</b><textarea id="topic" placeholder="Describe the topic, e.g. How small businesses can use AI agents for customer support"></textarea></div>
+ <div class="row">
+  <div class="seg2" id="depth" role="group" aria-label="Length"><button data-v="quick">Short</button><button data-v="standard" class="on">Standard</button><button data-v="deep">Deep</button></div>
+  <select id="tone" aria-label="Voice"><option>professional</option><option>friendly</option><option>academic</option><option>persuasive</option><option>simple</option></select>
+  <button class="go" id="go">Launch crew</button>
+ </div>
+</div>
+<div class="hud stage"><div class="sweep"></div>
+<svg viewBox="0 0 400 320" role="img" aria-label="Reactor showing the progress of three agents"><g id="rx"></g></svg>
+<div id="log">Crew on standby. Launch it to start the relay.</div>
+</div>
+<div class="agents" id="agents"></div>
+<div class="hud mlog"><h3>MISSION LOG</h3><ol id="ml"><li><time>--:--:--</time><span>Waiting for your first mission.</span></li></ol></div>
+<div class="err" id="err" role="alert"></div>
+<section class="rep" id="rep">
+ <div class="bar"><button id="copy">Copy text</button><button id="dl">Download .md</button><button id="print">Print or save PDF</button></div>
+ <article class="hud doc" id="doc"></article>
+</section>
+</div>
+<aside class="hud"><h3>PAST REPORTS</h3><div id="hist"></div></aside>
+</div>
+
+<section class="sect" id="features"><div class="c"><div class="eyebrow rv">FEATURES</div><h2 class="sec rv">Built like a real research team</h2><p class="lead rv">Each agent has one job, a clear hand-off and a visible status, so you always know what the crew is doing.</p>
+<div class="g3">
+<div class="hud card rv"><div class="ic">01</div><h3>Specialist agents</h3><p>A Researcher gathers facts, an Analyst weighs them and an Editor writes the final report.</p></div>
+<div class="hud card rv"><div class="ic">02</div><h3>Live mission control</h3><p>Watch progress on the reactor, agent cards and a timestamped mission log as the work moves along.</p></div>
+<div class="hud card rv"><div class="ic">03</div><h3>Length and voice</h3><p>Pick a short, standard or deep report and choose a professional, friendly, academic, persuasive or simple tone.</p></div>
+<div class="hud card rv"><div class="ic">04</div><h3>Report archive</h3><p>Every finished report is saved automatically so you can reopen, review or delete it later.</p></div>
+<div class="hud card rv"><div class="ic">05</div><h3>Export anywhere</h3><p>Copy the text, download clean Markdown, or print the report to PDF from your browser.</p></div>
+<div class="hud card rv"><div class="ic">06</div><h3>Open, simple stack</h3><p>CrewAI for the agents, Groq for the model and FastAPI for the backend. Swap the model in one line.</p></div>
+</div></div></section>
+<section class="sect" id="how"><div class="c"><div class="eyebrow rv">HOW IT WORKS</div><h2 class="sec rv">From question to report in three steps</h2>
+<div class="g3 steps"><div class="step rv"><h3 class="sec step-title">Describe the mission</h3><p>Type your topic and choose the length and voice you want.</p></div>
+<div class="step rv"><h3 class="sec step-title">The crew works</h3><p>Researcher, Analyst and Editor pass the work along while you follow each step live.</p></div>
+<div class="step rv"><h3 class="sec step-title">Receive your report</h3><p>Get a structured Markdown report with summary, findings, analysis and recommendations.</p></div></div></div></section>
+<section class="sect" id="use"><div class="c"><div class="eyebrow rv">USE CASES</div><h2 class="sec rv">Made for anyone who needs answers fast</h2>
+<div class="g3"><div class="hud card rv"><h3>Students</h3><p>Get an organised starting point for assignments, presentations and exam topics.</p></div>
+<div class="hud card rv"><h3>Founders and teams</h3><p>Scan a market, technology or idea before a meeting or a decision.</p></div>
+<div class="hud card rv"><h3>Analysts and writers</h3><p>Draft a structured briefing quickly, then refine it with your own sources.</p></div></div></div></section>
+<section class="sect" id="faq"><div class="c"><div class="eyebrow rv">FAQ</div><h2 class="sec rv">Questions, answered</h2><div class="faq rv">
+<details><summary>Which AI model does it use?</summary><p>By default an open GPT-OSS model served through Groq. You can change the model name in the .env file.</p></details>
+<details><summary>Can I trust the facts in a report?</summary><p>The agents are told not to invent facts or references, but AI can still make mistakes. Always verify important claims against trusted sources.</p></details>
+<details><summary>Where are my reports stored?</summary><p>On your own machine, in the reports folder next to the app. Nothing is uploaded anywhere except the prompts sent to the model provider.</p></details>
+<details><summary>Do I need my own API key?</summary><p>Yes. Add your Groq API key to the .env file before starting the server.</p></details></div></div></section>
+<section class="c"><div class="hud band rv"><h2 class="sec">Ready to put the crew to work?</h2><p>Give it a topic and see the report come together in minutes.</p><a class="go" href="#app">Launch crew</a></div></section>
+<footer><div class="c"><img src="/img/logo-wordmark.svg" alt="Baton" height="30"><span>A multi-agent research crew built with CrewAI, Groq and FastAPI.</span><span class="foot-links">&copy; 2026 Baton<a href="#features">Features</a><a href="#faq">FAQ</a><a href="#top">Back to top</a></span></div></footer>
+<script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3.1.6/dist/purify.min.js"></script>
+<script src="/js/mission.js"></script>
+<script src="/js/agents.js"></script>
+<script src="/js/particles.js"></script>
+<script src="/js/effects.js"></script>
+<script src="/js/reveal.js"></script>
+<script src="/js/nav-auth.js"></script></body></html>
