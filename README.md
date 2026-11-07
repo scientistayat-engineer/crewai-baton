@@ -198,7 +198,7 @@ Colours: `#00E5FF` cyan, `#1E90FF` blue, `#020B14` void, `#07243A` panel. Fonts:
 ## Quick start (local)
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/crewai-baton.git
+git clone https://github.com/scientistayat-engineer/crewai-baton.git
 cd crewai-baton
 
 python -m venv venv
